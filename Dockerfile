@@ -4,7 +4,7 @@ FROM debian:buster
 RUN apt-get update
 
 ## install postgresql 13
-RUN apt-get install -y lsb-release wget gnupg2
+RUN apt-get install -y lsb-release wget gnupg2 sudo
 RUN sh -c 'echo "deb http://apt.postgresql.org/pub/repos/apt $(lsb_release -cs)-pgdg main" > /etc/apt/sources.list.d/pgdg.list'
 RUN wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | apt-key add -
 RUN apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 7FCC7D46ACCC4CF8
