@@ -8,4 +8,5 @@ init() {
 
 init
 sudo -u postgres /usr/lib/postgresql/13/bin/postgres -D /postgres/data &
+sleep 9
 pgweb --no-ssh --host localhost --user postgres --db postgres
