@@ -4,11 +4,12 @@
 * database: postgres
 * password: postgres
 
-Start postgres daemon:
+### Usage
 ```
-$ /usr/lib/postgresql/13/bin/postgres -D /postgres &
+$ docker pull ga6840/postgres13
+$ docker run -it -v `pwd`/tmp:/postgres/data --network host ga6840/postgres13
 ```
-(listening at port 5432)
+(PostgreSQL is listening at port 5432, and pgweb is at port 8081)
 
 ### PostgreSQL examples
 * list database: `psql <<< '\list'`
@@ -16,12 +17,6 @@ $ /usr/lib/postgresql/13/bin/postgres -D /postgres &
 * insertion: `psql <<< "INSERT INTO person VALUES ('Tom', 19)"`
 * query: `psql <<< 'SELECT * FROM person'`
 * backup: `pg_basebackup` is used for a running PostgreSQL cluster.
-
-### Run pgweb
-```
-$ pgweb --no-ssh --host localhost --user postgres --db postgres
-```
-(listening at port 8081)
 
 ### Links
 * https://www.postgresql.org/docs/13/index.html
