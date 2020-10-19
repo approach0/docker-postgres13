@@ -4,6 +4,12 @@
 * database: postgres
 * password: postgres
 
+Start postgres daemon:
+```
+$ /usr/lib/postgresql/13/bin/postgres -D /postgres &
+```
+(listening at port 5432)
+
 ### PostgreSQL examples
 * list database: `psql <<< '\list'`
 * create table: `psql <<< "CREATE TABLE person (name text, age integer)"`
@@ -13,7 +19,7 @@
 
 ### Run pgweb
 ```
-$ pgweb --host localhost --user postgres --db postgres
+$ pgweb --no-ssh --host localhost --user postgres --db postgres
 ```
 (listening at port 8081)
 

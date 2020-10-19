@@ -14,15 +14,13 @@ RUN apt-get -y install postgresql-13
 ## install pgweb
 RUN apt-get install -y unzip
 RUN wget https://github.com/sosedoff/pgweb/releases/download/v0.11.7/pgweb_linux_amd64.zip
-RUN unzip pgweb_linux_amd64.zip && mv pgweb_linux_amd64 /usr/local/bin/pgweb
+RUN unzip pgweb_linux_amd64.zip && mv pgweb_linux_amd64 /usr/local/bin/pgweb && rm pgweb_linux_amd64.zip
 
-## setup postgres
+## setup entrypoint
 RUN mkdir /postgres
 RUN chown postgres /postgres
-USER postgres
-RUN echo postgres > /tmp/pass
-RUN /usr/lib/postgresql/13/bin/initdb -D /postgres -U postgres --pwfile=/tmp/pass
-RUN rm /tmp/pass
-RUN sed -i '/port =/c port = 5432' /postgres/postgresql.conf
-RUN sed -i "/listen_addresses =/c listen_addresses = '*'" /postgres/postgresql.conf
-CMD /usr/lib/postgresql/13/bin/postgres -D /postgres
+WORKDIR /postgres
+ADD ./entrypoint.sh ./entrypoint.sh
+RUN chmod +x ./entrypoint.sh
+
+CMD /postgres/entrypoint.sh
