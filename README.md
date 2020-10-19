@@ -7,9 +7,10 @@
 ### Usage
 ```
 $ docker pull ga6840/postgres13
-$ docker run -it -v `pwd`/tmp:/postgres/data --network host ga6840/postgres13
+$ docker run -it -v `pwd`/tmp:/postgres/data -p 8080:80 -p 5432:5432 ga6840/postgres13
 ```
-(PostgreSQL is listening at port 5432, and pgweb is at port 80)
+PostgreSQL is listening at port 5432, and pgweb is at port 80 in container, and above
+command simply maps both to host, where pgweb can be accessed from `http://0.0.0.0:8080/`.
 
 ### PostgreSQL examples
 * list database: `psql <<< '\list'`
