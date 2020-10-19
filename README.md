@@ -9,7 +9,7 @@
 $ docker pull ga6840/postgres13
 $ docker run -it -v `pwd`/tmp:/postgres/data --network host ga6840/postgres13
 ```
-(PostgreSQL is listening at port 5432, and pgweb is at port 8081)
+(PostgreSQL is listening at port 5432, and pgweb is at port 80)
 
 ### PostgreSQL examples
 * list database: `psql <<< '\list'`
