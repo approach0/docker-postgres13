@@ -8,7 +8,7 @@ init() {
 
 	grep 'AUTOADD' $MNT_PATH/pg_hba.conf
 	if [ ! "$?" -eq 0 ]; then
-		echo "host all all 172.17.0.0/16 trust # AUTOADD" >> $MNT_PATH/pg_hba.conf
+		echo "host all all 0.0.0.0/0 trust # AUTOADD" >> $MNT_PATH/pg_hba.conf
 	fi
 	chown -R postgres:postgres /postgres/*
 }
