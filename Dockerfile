@@ -11,6 +11,9 @@ RUN apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 7FCC7D46ACCC4CF8
 RUN apt-get update
 RUN apt-get -y install postgresql-13
 
+## install cronjob
+RUN apt-get install -y cron
+
 ## install pgweb
 RUN apt-get install -y unzip
 RUN wget https://github.com/sosedoff/pgweb/releases/download/v0.11.7/pgweb_linux_amd64.zip
@@ -23,4 +26,4 @@ WORKDIR /postgres
 ADD ./entrypoint.sh ./entrypoint.sh
 RUN chmod +x ./entrypoint.sh
 
-CMD /postgres/entrypoint.sh
+CMD /postgres/entrypoint.sh setup_and_serve
