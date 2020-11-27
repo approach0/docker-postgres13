@@ -39,8 +39,10 @@ setup_and_serve() {
 
 	# At 03:01 each day
 	(crontab -l ; echo "1 3 * * * /postgres/entrypoint.sh backup") | sort - | uniq - | crontab -
-	# each minute
-	(crontab -l ; echo "1 * * * * /postgres/entrypoint.sh cron_test") | sort - | uniq - | crontab -
+	# every minute
+	(crontab -l ; echo "* * * * * /postgres/entrypoint.sh cron_test") | sort - | uniq - | crontab -
+	# spawn a cron daemon
+	cron && pstree
 
 	sudo -u postgres /usr/lib/postgresql/13/bin/postgres -D $DATA_PATH &
 	sleep 32 # wait until pg is ready to serve
