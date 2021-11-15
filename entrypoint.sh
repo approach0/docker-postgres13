@@ -1,3 +1,4 @@
+#!/bin/bash
 DATA_PATH=/postgres/data
 
 setup_postgres() {
