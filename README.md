@@ -14,6 +14,7 @@ command simply maps both to host, where pgweb can be accessed from `http://0.0.0
 
 ### PostgreSQL examples
 * list database: `psql <<< '\list'`
+* list table: `psql <<< '\dt'`
 * create table: `psql <<< "CREATE TABLE person (name text, age integer)"`
 * insertion: `psql <<< "INSERT INTO person VALUES ('Tom', 19)"`
 * query: `psql <<< 'SELECT * FROM person'`
